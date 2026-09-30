@@ -1,0 +1,48 @@
+#Dossier GPIO
+
+##Code source :
+
+
+import machine
+import time
+ 
+led = machine.Pin(16,machine.Pin.OUT)
+button = machine.Pin(18,machine.Pin.IN)
+ 
+val = 0
+compteur = 0
+tempsfrequenc1 = 0
+led.value(0)
+ 
+while True :
+    tempsboucle = time.ticks_ms()
+ 
+    if button.value() == 1 :
+        val = val+1
+        print(val)
+        tempsfrequenc1 = time.ticks_ms()
+        while button.value()==1 :
+            time.sleep_ms(10)
+    if val == 4 :
+        val = 0
+        led.value(0)
+
+    if val == 1 :
+        if tempsboucle - tempsfrequenc1 > 2000 :
+            led.value(0)
+            tempsfrequenc1 = time.ticks_ms()
+        if tempsboucle - tempsfrequenc1 > 1000 :
+            led.value(1)
+
+    if val == 2 :
+        if tempsboucle - tempsfrequenc1 > 1000 :
+            led.value(0)
+            tempsfrequenc1 = time.ticks_ms()
+        if tempsboucle - tempsfrequenc1 > 500 :
+            led.value(1)
+    if val == 3 :
+        if tempsboucle - tempsfrequenc1 > 500 :
+            led.value(0)
+            tempsfrequenc1 = time.ticks_ms()
+        if tempsboucle - tempsfrequenc1 > 250 :
+            led.value(1)
