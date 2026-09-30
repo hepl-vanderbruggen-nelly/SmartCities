@@ -1,4 +1,4 @@
-#Dossier GPIO
+# Dossier GPIO - Gestion d'une LED et d'un bouton-poussoir
 
 ## Description du projet
 Ce script en MicroPython permet de contrôler une **LED** (branchée sur la broche 16 en sortie) à l'aide d'un **bouton-poussoir** (branché sur la broche 18 en entrée). 
@@ -12,11 +12,11 @@ Ce script en MicroPython permet de contrôler une **LED** (branchée sur la broc
 - **`val == 0` :** La LED est éteinte.
 - **`val == 1` :** Clignotement lent (alternance toutes les secondes).
 - **`val == 2` :** Clignotement moyen (alternance toutes les 500 ms).
-- **`val == 3` :** Clignotement rapide (alternance toutes les 250 ms).
+- **`val == 3` :** La LED s'éteint.
 
-##Code source :
+## Code source
 
-
+```python
 import machine
 import time
  
